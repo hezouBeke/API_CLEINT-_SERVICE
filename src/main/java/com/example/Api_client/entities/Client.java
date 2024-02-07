@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 @Table(name = "CLIENT")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
 
@@ -31,7 +31,7 @@ public class Client {
         this.id = id;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)  {
         this.email = email;
     }
 }
