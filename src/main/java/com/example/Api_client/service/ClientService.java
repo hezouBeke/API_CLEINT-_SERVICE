@@ -3,10 +3,10 @@ package com.example.Api_client.service;
 import com.example.Api_client.entities.Client;
 import com.example.Api_client.repository.ClientRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,6 +21,13 @@ public class ClientService {
     }
 
     public void Creer(Client client){
-       this.clientRepository.save(client);
+        Client clientDansLaBDD = this.clientRepository.findByEmail(client.getEmail());
+         if (clientDansLaBDD == null){
+             this.clientRepository.save(client);
+         }
+    }
+
+    public Optional<Client> lire(int id){
+        return this.clientRepository.findById(id);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import  static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
@@ -27,5 +28,9 @@ public class ClientController {
    public List<Client> recherche(){
         return this.clientService.rechercher();
 
+    }
+@GetMapping( path = "{id}" ,produces = APPLICATION_JSON_VALUE)
+   public Optional<Client> lire(@PathVariable int id){
+        return this.clientService.lire(id);
     }
 }
