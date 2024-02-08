@@ -11,11 +11,13 @@ import java.util.Optional;
 
 @Service
 public class ClientService {
-    private ClientRepository clientRepository;
 
     public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
+
+    private ClientRepository clientRepository;
+
     public List<Client> rechercher(){
         return this.clientRepository.findAll();
     }
@@ -27,7 +29,11 @@ public class ClientService {
          }
     }
 
-    public Optional<Client> lire(int id){
-        return this.clientRepository.findById(id);
+    public Client lire(int id){
+        Optional <Client> optionnalClient =  this.clientRepository.findById(id);
+        if (optionnalClient.isPresent()){
+            return optionnalClient.get();
+        }
+        return null;
     }
 }

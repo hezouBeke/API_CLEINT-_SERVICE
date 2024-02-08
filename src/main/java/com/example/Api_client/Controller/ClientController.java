@@ -31,6 +31,6 @@ public class ClientController {
     }
 @GetMapping( path = "{id}" ,produces = APPLICATION_JSON_VALUE)
    public Optional<Client> lire(@PathVariable int id){
-        return this.clientService.lire(id);
+        return Optional.ofNullable(this.clientService.lire(id));
     }
 }
